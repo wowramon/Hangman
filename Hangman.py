@@ -1,6 +1,6 @@
 import os
-
-
+import random
+import re
 
 def loadData(): # Cargamos las palabras del archivo Data
     
@@ -8,12 +8,30 @@ def loadData(): # Cargamos las palabras del archivo Data
       Words = [i for i in Dp ] # Comprehension list para almacenar el texto en variable
   return Words
   
+def getRamdonW(): # Funcion que devuelve una palabra aleatoria
+  text = loadData() # cargamos la lista en la variable text
+  word = text[random.randrange(len(text))] # Guardamos el texto en la variable indexando dentro de la lista con un numero aleatorio
+  return word # devolvemos el resultado
+    
+
+def SplitList(word,hidden): #Funcion que nos ayuda a dividir la palabra en una lista letra por letra, Ademas nos ayuda a crear una lista que oculta dichas letras
+  newlist = [char for char in word] #Comprehension list que nos ayuda a separa la palabra en letras
+  if hidden : #Condicional 
+      hiddenList = ['_' for char in word] # añadimos el caracter especial a una nueva lista dependiendo de la cantidad de letras que tenga la palabra
+      return hiddenList # return
+  else:
+    return newlist # return
+    
+    
+    
 def board(): # Indica el tablero de juego
     Trigger = False  # Armamos variable trigger para salir del loop
     while Trigger:
         print('Welcom to the hangman game') # Header
-        
-        Trigger = True # Salirmos del Loop
+        word = getRamdonW()  # Body
+        print(word.split())
+        os.system('pause')
+        Trigger = True # Salimos del Loop
         
             
    
@@ -21,7 +39,12 @@ def board(): # Indica el tablero de juego
     
      
 def run(): # Funcion principal
-   loadData()
+    word = getRamdonW()  # Body
+    List = SplitList(word,False)
+    ListH = SplitList(word,True)
+
+    print(List)
+    print(ListH)
 
 
 if __name__=='__main__':
