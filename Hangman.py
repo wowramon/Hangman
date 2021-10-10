@@ -32,8 +32,12 @@ def board(): # Indica el tablero de juego
         List = SplitList(word,False)
         HiddenList = SplitList(word,True)
         
+        display = ' '
         for i in len(HiddenList):
-            print(HiddenList[i])
+           char = HiddenList[i]
+           display = char + display
+           
+        print(display)
         
         os.system('pause')
         Trigger = True # Salimos del Loop
@@ -47,9 +51,12 @@ def run(): # Funcion principal
     word = getRamdonW()  # Body
     List = SplitList(word,False)
     ListH = SplitList(word,True)
-    for i in ListH:
-       print(i)
-
+    display = ' '
+    for i in range(len(ListH)):
+       char = ListH[i]
+       display = char + display
+       
+    print(display)
 
 if __name__=='__main__':
     run()
