@@ -22,14 +22,19 @@ def SplitList(word,hidden): #Funcion que nos ayuda a dividir la palabra en una l
   else:
     return newlist # return
     
-    
+
     
 def board(): # Indica el tablero de juego
     Trigger = False  # Armamos variable trigger para salir del loop
     while Trigger:
         print('Welcom to the hangman game') # Header
         word = getRamdonW()  # Body
-        print(word.split())
+        List = SplitList(word,False)
+        HiddenList = SplitList(word,True)
+        
+        for i in len(HiddenList):
+            print(HiddenList[i])
+        
         os.system('pause')
         Trigger = True # Salimos del Loop
         
@@ -42,9 +47,8 @@ def run(): # Funcion principal
     word = getRamdonW()  # Body
     List = SplitList(word,False)
     ListH = SplitList(word,True)
-
-    print(List)
-    print(ListH)
+    for i in ListH:
+       print(i)
 
 
 if __name__=='__main__':
