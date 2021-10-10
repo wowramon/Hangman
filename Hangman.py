@@ -4,7 +4,7 @@ import re
 
 def loadData(): # Cargamos las palabras del archivo Data
     
-  with open('Data.txt','r', encoding='utf-8') as Dp:  # Abrimos el archivo Data en modo solo lectura y le agregamos el formato de decodificacion utf-8
+  with open('Data.txt','r', encoding="utf-8") as Dp:  # Abrimos el archivo Data en modo solo lectura y le agregamos el formato de decodificacion utf-8
       Words = [i for i in Dp ] # Comprehension list para almacenar el texto en variable
   return Words
   
@@ -22,6 +22,13 @@ def SplitList(word,hidden): #Funcion que nos ayuda a dividir la palabra en una l
   else:
     return newlist # return
     
+def Display(List): # Funcion que nos despliega los espacios 
+   display = ' ' 
+   for i in range(len(List)):
+      char = List[i]
+      display = display + char #Cadena de caracteres
+      
+   print(display)
 
     
 def board(): # Indica el tablero de juego
@@ -32,12 +39,7 @@ def board(): # Indica el tablero de juego
         List = SplitList(word,False)
         HiddenList = SplitList(word,True)
         
-        display = ' '
-        for i in len(HiddenList):
-           char = HiddenList[i]
-           display = char + display
-           
-        print(display)
+       
         
         os.system('pause')
         Trigger = True # Salimos del Loop
@@ -50,13 +52,7 @@ def board(): # Indica el tablero de juego
 def run(): # Funcion principal
     word = getRamdonW()  # Body
     List = SplitList(word,False)
-    ListH = SplitList(word,True)
-    display = ' '
-    for i in range(len(ListH)):
-       char = ListH[i]
-       display = char + display
-       
-    print(display)
+    Display(List)
 
 if __name__=='__main__':
     run()
