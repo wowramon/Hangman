@@ -30,6 +30,7 @@ def Display(List): # Funcion que nos despliega los espacios
       
    print(display)
 
+
     
 def board(): # Indica el tablero de juego
     Trigger = False  # Armamos variable trigger para salir del loop
@@ -39,7 +40,14 @@ def board(): # Indica el tablero de juego
         List = SplitList(word,False)
         HiddenList = SplitList(word,True)
         
-       
+        input_word =input('Introduce una letra o palabra:\n ')
+        
+        for item in input_word.split():
+          for i in List:
+            if(item == i):
+              HiddenList[i] = item
+        
+        Display(HiddenList)
         
         os.system('pause')
         Trigger = True # Salimos del Loop
