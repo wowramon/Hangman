@@ -55,16 +55,13 @@ def board(): # Indica el tablero de juego
     
     while Trigger:
         
-        print(Display(List))
         input_word =input('Introduce una letra:\n ') #Ingresamos una letra
      
+        
         for item in input_word.split():
           for i in range(len(List)):           # Body
             if(item.lower() == List[i]): #Validamos la letra y la pasamos a minusculas con la funcion lower
               HiddenList[i] = item.lower() #Si coninciden agregamos dicho item en el index correspondiente
-               
-       
-        
         
         
         if Validate(Display(HiddenList),Display(List)):
