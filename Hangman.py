@@ -50,10 +50,6 @@ def Validate(listH,listW,bool):  #Funcion que nos ayuda a validar la cadena de s
            
        return countH
            
-   
-      
-      
-    
 
    
 def board(): # Indica el tablero de juego
@@ -71,7 +67,7 @@ def board(): # Indica el tablero de juego
     while Trigger:
         
         input_word =input('Introduce una letra:\n ') #Ingresamos una letra
-     
+        
         
         for item in input_word.split():
           for i in range(len(List)):           # Body
@@ -79,20 +75,18 @@ def board(): # Indica el tablero de juego
               HiddenList[i] = item.lower() #Si coninciden agregamos dicho item en el index correspondiente
         
         if Lose_count == Validate(HiddenList,HiddenList,True): #Comprueba si hay cambios en la lista si no las hay significa que fallo el intento
-           n = n + 1
+           n = n + 1 #Suma del contador
            
         else:
-          Lose_count = Validate(HiddenList,HiddenList,True) #Igualamos la variable
-           
+          Lose_count = Validate(HiddenList,HiddenList,True) #Igualamos la variable en caso de que haya acertado la letra
           
-        
         
         if Validate(Display(HiddenList),Display(List),False):
          clear()
          print(Display(HiddenList)) #Mostramos en pantalla los espacio a completar
          print('You WIN')
          Trigger = False # Salimos del Loop
-        elif n >= 11: 
+        elif n >= 9: 
            print(Display(List))
            print('You Lose')
            Trigger = False # Salimos del Loop
