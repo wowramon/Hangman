@@ -1,6 +1,5 @@
 import os
 import random
-import re
 
 def loadData(): # Cargamos las palabras del archivo Data
     
@@ -47,8 +46,10 @@ def Validate(listH,listW):  #Funcion que nos ayuda a validar la cadena de string
 def board(): # Indica el tablero de juego
     Trigger = True # Armamos variable trigger para salir del loop
     
-    print('Welcom to the hangman game') # Header
-    word = getRamdonW()  
+    clear = lambda: os.system('clear') # funcion anonima para limpiar el terminal 
+    print('Welcome To The Hangman Game') # Header
+    word = getRamdonW()  #Obtener la palabra random
+    
     List = SplitList(word,False)
     HiddenList = SplitList(word,True)
     print(Display(HiddenList))  #Mostramos en pantalla los espacio a completar
@@ -65,23 +66,17 @@ def board(): # Indica el tablero de juego
         
         
         if Validate(Display(HiddenList),Display(List)):
+         clear()
          print(Display(HiddenList)) #Mostramos en pantalla los espacio a completar
          Trigger = False # Salimos del Loop
         else:
+         clear()
          print(Display(HiddenList))
+         print('You WIN')
          
-         
-        
-            
    
-
-    
-     
 def run(): # Funcion principal
-    # word = getRamdonW()  # Body
-    # List = SplitList(word,False)
-    # Display(List)
-    board()
+  board()
 
 if __name__=='__main__':
     run()
