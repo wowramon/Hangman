@@ -15,7 +15,7 @@ def getRamdonW(): # Funcion que devuelve una palabra aleatoria
     
 
 def SplitList(word,hidden): #Funcion que nos ayuda a dividir la palabra en una lista letra por letra, Ademas nos ayuda a crear una lista que oculta dichas letras
-  newlist = [char for char in word] #Comprehension list que nos ayuda a separa la palabra en letras
+  newlist = [char for char in word if char != '\n'] #Comprehension list que nos ayuda a separa la palabra en letras
   if hidden : #Condicional 
       hiddenList = ['_' for char in word if char != '\n' ] # añadimos el caracter especial a una nueva lista dependiendo de la cantidad de letras que tenga la palabra Validamos para no agregar el salto de linea
       return hiddenList # return
@@ -30,7 +30,19 @@ def Display(List): # Funcion que nos despliega los espacios
       
    return display
 
-
+def Validate(listH,listW):  #Funcion que nos ayuda a validar la cadena de strings
+    countH = 0  #Counts 
+    countW = 0
+    
+    for i in range(len(listH)):
+      if listH[i] != '_':  #Si el char es diferente al de _ suma 1 al contador
+        countH = countH+1
+        
+    for i in range(len(listW)):
+      countW = countW+1  #contador por cada char
+      
+      
+    return countH == countW  #valida si la cantidad de char es correcta
     
 def board(): # Indica el tablero de juego
     Trigger = True # Armamos variable trigger para salir del loop
@@ -51,12 +63,11 @@ def board(): # Indica el tablero de juego
             if(item.lower() == List[i]): #Validamos la letra y la pasamos a minusculas con la funcion lower
               HiddenList[i] = item.lower() #Si coninciden agregamos dicho item en el index correspondiente
                
-        h = str(Display(HiddenList))
-        l= str(Display(List))
-        print(h.lower() is l.lower())
+       
         
         
-        if sorted(h) is sorted(l):
+        
+        if Validate(Display(HiddenList),Display(List)):
          print(Display(HiddenList)) #Mostramos en pantalla los espacio a completar
          Trigger = False # Salimos del Loop
         else:
