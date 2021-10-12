@@ -17,7 +17,7 @@ def getRamdonW(): # Funcion que devuelve una palabra aleatoria
 def SplitList(word,hidden): #Funcion que nos ayuda a dividir la palabra en una lista letra por letra, Ademas nos ayuda a crear una lista que oculta dichas letras
   newlist = [char for char in word] #Comprehension list que nos ayuda a separa la palabra en letras
   if hidden : #Condicional 
-      hiddenList = ['_' for char in word if char != '\n' ] # añadimos el caracter especial a una nueva lista dependiendo de la cantidad de letras que tenga la palabra
+      hiddenList = ['_' for char in word if char != '\n' ] # añadimos el caracter especial a una nueva lista dependiendo de la cantidad de letras que tenga la palabra Validamos para no agregar el salto de linea
       return hiddenList # return
   else:
     return newlist # return
@@ -49,14 +49,19 @@ def board(): # Indica el tablero de juego
         for item in input_word.split():
           for i in range(len(List)):           # Body
             if(item.lower() == List[i]): #Validamos la letra y la pasamos a minusculas con la funcion lower
-              HiddenList[i] = item.lower() #
+              HiddenList[i] = item.lower() #Si coninciden agregamos dicho item en el index correspondiente
                
+        h = str(Display(HiddenList))
+        l= str(Display(List))
+        print(h.lower() is l.lower())
         
-        if str(Display(HiddenList)) is str(Display(List)):
+        
+        if sorted(h) is sorted(l):
          print(Display(HiddenList)) #Mostramos en pantalla los espacio a completar
          Trigger = False # Salimos del Loop
         else:
          print(Display(HiddenList))
+         
          
         
             
