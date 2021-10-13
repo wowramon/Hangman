@@ -3,7 +3,7 @@ import random
 
 def loadData(): # Cargamos las palabras del archivo Data
     
-  with open('Data.txt','r') as Dp:  # Abrimos el archivo Data en modo solo lectura y le agregamos el formato de decodificacion utf-8
+  with open('Data.txt','r', encoding='utf-8') as Dp:  # Abrimos el archivo Data en modo solo lectura y le agregamos el formato de decodificacion utf-8
       Words = [i for i in Dp ] # Comprehension list para almacenar el texto en variable
   return Words
   
@@ -62,8 +62,8 @@ def board(): # Indica el tablero de juego
     List = SplitList(word,False)
     HiddenList = SplitList(word,True)
     print(Display(HiddenList))  #Mostramos en pantalla los espacio a completar
-    Lose_count = 0
-    n = 0
+    Lose_count = 0 # contador de perdidas
+    n = 0 #Contador de perdidas
     while Trigger:
         
         input_word =input('Introduce una letra:\n ') #Ingresamos una letra
@@ -76,12 +76,11 @@ def board(): # Indica el tablero de juego
         
         if Lose_count == Validate(HiddenList,HiddenList,True): #Comprueba si hay cambios en la lista si no las hay significa que fallo el intento
            n = n + 1 #Suma del contador
-           
         else:
           Lose_count = Validate(HiddenList,HiddenList,True) #Igualamos la variable en caso de que haya acertado la letra
           
         
-        if Validate(Display(HiddenList),Display(List),False):
+        if Validate(Display(HiddenList),Display(List),False): #Valimados si el HiddenList tiene la misma cantidad de letras que List
          clear()
          print(Display(HiddenList)) #Mostramos en pantalla los espacio a completar
          print('You WIN')
@@ -95,7 +94,6 @@ def board(): # Indica el tablero de juego
          print(Display(HiddenList))
          print(str(n) +' Intentos fallidos')
          
-          
 def run(): # Funcion principal
   board()
 
